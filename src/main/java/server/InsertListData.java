@@ -1,22 +1,22 @@
 package server;
 import Products.Foods;
 import com.mongodb.*;
-import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
 
 import java.util.List;
 import static java.util.Arrays.asList;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
-public class InsertData {
-    BasicDBObject document = new BasicDBObject();
+public class InsertListData {
     public static void main(String[] args) {
-        MongoClient mongoClient = MongoClients.create("mongodb+srv://carlos_curso:bros2011@sandbox.fnsvd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
-        MongoDatabase database = mongoClient.getDatabase("mongo_connection");
-        System.out.println("Conexão bem sucedida!\n"+"Por favor aguarde ...");
+        CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+        MongoClient mongoClient = new MongoClient("localhost", MongoClientOptions.builder().codecRegistry(pojoCodecRegistry).build());
+        MongoDatabase database = mongoClient.getDatabase("mongo_connection").withCodecRegistry(pojoCodecRegistry);
 
         //Inserir dados
         MongoCollection<Foods> productList = database.getCollection("product", Foods.class);
