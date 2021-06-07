@@ -19,15 +19,16 @@ public class InsertListData {
         MongoDatabase database = mongoClient.getDatabase("mongo_connection").withCodecRegistry(pojoCodecRegistry);
 
         //Inserir dados
-        MongoCollection<Foods> productList = database.getCollection("product", Foods.class);
+        MongoCollection<Foods> productList = database.getCollection("products", Foods.class);
         List<Foods> foods = asList(
                 new Foods("Food",false, "teste1", 22),
-                new Foods("Food",true, "teste2", 12),
+                new Foods("Fruit",true, "teste2", 12),
                 new Foods("Food",true, "teste3", 45),
-                new Foods("Food",false, "teste4", 22),
+                new Foods("Fruit",false, "teste4", 22),
                 new Foods("Food",false, "teste5", 12),
-                new Foods("Food",false, "teste6", 199)
+                new Foods("Fruit",false, "teste6", 199)
         );
         productList.insertMany(foods);
+        System.out.println(foods);
     }
 }

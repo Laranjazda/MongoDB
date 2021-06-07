@@ -1,10 +1,11 @@
-package server;
-
+package Olds;
 import Olds.Connection;
-import com.mongodb.*;
+import com.mongodb.DBCursor;
 
-public class ShowData {
-    public static void main(String[] args) {
+import java.net.UnknownHostException;
+
+public class show {
+    public static void main(String[] args) throws UnknownHostException {
         Connection connection = new Connection();
         connection.conectDB();
         //Ler dados

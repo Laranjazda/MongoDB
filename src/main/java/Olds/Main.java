@@ -5,12 +5,14 @@ import java.net.UnknownHostException;
 public class Main {
 
     public static void main(String[] args) throws UnknownHostException {
-        Connection connection = new Connection();
+//        Methods methods = new Methods();
+//        methods.insertData("123");
+//        methods.updateData("um", "KKKKKKKKK");
+//        methods.showData();
+//        methods.removeData("123");
 
-//        connection.insertData("123");
-//        connection.updateData("um", "KKKKKKKKK");
-//        connection.showData();
-//        connection.removeData("123");
+        Connection connection = new Connection();
+        connection.conectDB();
 
     }
 }

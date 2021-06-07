@@ -1,27 +1,21 @@
 package server;
 
+import Olds.Connection;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 
+import java.util.Collection;
+
 public class RemoveData {
-    public static DB dataBase;
-    public static DBCollection collection;
     public static BasicDBObject document = new BasicDBObject();
-
     public static void main(String[] args) {
-        MongoClient connectionServer = new MongoClient("localhost", 27017);
-        dataBase = connectionServer.getDB("mongo_connection");
-        collection = dataBase.getCollection("product");
-        System.out.println("Conexão bem sucedida!\n"+"Por favor aguarde ...");
-
+        Connection connection = new Connection();
+        connection.conectDB();
         //Remover dados
-        String Data = "Music";
+        String Data = "Teste";
         document.put("CPF",Data);
-        collection.remove(document);
-
-        System.out.println (document);
-
+        Connection.collection.remove(document);
     }
 }
