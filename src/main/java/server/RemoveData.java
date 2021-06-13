@@ -14,8 +14,9 @@ public class RemoveData {
         Connection connection = new Connection();
         connection.conectDB();
         //Remover dados
-        String Data = "Teste";
+        String Data = "01551974010";
         document.put("CPF",Data);
         Connection.collection.remove(document);
+
     }
 }
